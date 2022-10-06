@@ -1,0 +1,57 @@
+{% block content%}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#user {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#user td, #user th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#user tr:nth-child(even){background-color: #f2f2f2;}
+
+#user tr:hover {background-color: #ddd;}
+
+#user th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+{% if not data %}
+  <h1> No Records Found <h1>
+{% else %}
+
+<h1>IP address and user Details</h1>
+<table id="user">
+  <tr>
+    <th>Id</th>
+    <th>Object Name</th>
+    <th>Address</th>
+    <th>Owner</th>
+  </tr>
+  {% for d in data %}
+  <tr>
+    <th>{{ d.id }}</th>
+    <th>{{ d.object_name }}</th>
+    <th>{{ d.address }}</th>
+    <th>{{ d.owner }}</th>
+  </tr>
+  {% endfor %}
+  {% endif %}
+</table>
+</body>
+</html>
+
+  {% endblock %}
